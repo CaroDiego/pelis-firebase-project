@@ -7,6 +7,7 @@ import FilmCard from "./FilmCard";
 function FilmList() {
   const [films, setFilms] = useState([]);
 
+  // TODO hacerlo como el viewModel
   useEffect(() => {
     const filmsArr = [];
     const filmsColl = collection(db, "films");
