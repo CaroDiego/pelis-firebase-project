@@ -1,22 +1,22 @@
 import React from "react";
-import { collection, getDocs } from "firebase/firestore";
-import db from "../../firebase.js";
 import { useState, useEffect } from "react";
 import FilmCard from "./FilmCard";
+import "./FilmList.css";
+import { getAllDocuments } from "../firebase/firestore";
 
 function FilmList() {
   const [films, setFilms] = useState([]);
 
-  // TODO hacerlo como el viewModel
   useEffect(() => {
-    const filmsArr = [];
-    const filmsColl = collection(db, "films");
-    getDocs(filmsColl).then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        filmsArr.push({ id: doc.id, ...doc.data() });
-      });
-      setFilms(filmsArr);
-    });
+    const fetchFilms = async () => {
+      try {
+        const filmsArr = await getAllDocuments("films");
+        setFilms(filmsArr);
+      } catch (e) {
+        console.error("Error fetching films:", e);
+      }
+    };
+    fetchFilms();
   }, []);
 
   const filmCards = films.map((film) => {

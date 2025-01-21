@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <div>
-        {/* <GetForm></GetForm> */}
+        <GetForm></GetForm>
         <FilmList></FilmList>
       </div>
     </>
