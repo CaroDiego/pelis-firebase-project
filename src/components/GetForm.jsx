@@ -4,8 +4,10 @@ function GetForm() {
   const [name, setName] = useState("");
   const [poster, setPoster] = useState("");
   const [year, setYear] = useState("");
-  const [genre, setGenre] = useState("");
-  const [director, setDirector] = useState("");
+  const [genre, setGenre] = useState("");//TODO array
+  const [director, setDirector] = useState(""); //TODO array
+
+  const fieldsComplete = name && poster && year && genre && director;
 
   const nameChange = (e) => {
     setName(e.target.value);
@@ -42,9 +44,11 @@ function GetForm() {
     try {
       await addDocument("films", film);
       //*Do Something
-      //?Limpia el formulario
-      //?Actualizar la lista de peliculas
-      //?Mostrar mensaje de exito
+      setName("");
+      setPoster("");
+      setYear("");
+      setGenre("");
+      setDirector("");
     } catch (error) {
       console.error("Error adding document:", e);
     }
@@ -53,25 +57,40 @@ function GetForm() {
     <form onSubmit={handleSubmit}>
       <fieldset>
         <label htmlFor="name-film">Film Name: </label>
-        <input type="text" id="name-film" onChange={nameChange} />
+        <input type="text" id="name-film" value={name} onChange={nameChange} />
       </fieldset>
       <fieldset>
         <label htmlFor="poster-film">Poster: </label>
-        <input type="text" id="poster-film" onChange={posterChange}></input>
+        <input
+          type="text"
+          id="poster-film"
+          value={poster}
+          onChange={posterChange}
+        ></input>
       </fieldset>
       <fieldset>
         <label htmlFor="year-film">Year: </label>
-        <input type="text" id="year-film" onChange={yearChange} />
+        <input type="text" id="year-film" value={year} onChange={yearChange} />
       </fieldset>
       <fieldset>
         <label htmlFor="genre-film">Genre: </label>
-        <input type="text" id="genre-film" onChange={genreChange} />
+        <input
+          type="text"
+          id="genre-film"
+          value={genre}
+          onChange={genreChange}
+        />
       </fieldset>
       <fieldset>
         <label htmlFor="director-film">Director: </label>
-        <input type="text" id="director-film" onChange={directorChange} />
+        <input
+          type="text"
+          id="director-film"
+          value={director}
+          onChange={directorChange}
+        />
       </fieldset>
-      <button>Submit</button>
+      {fieldsComplete && <button>Submit</button>}
     </form>
   );
 }

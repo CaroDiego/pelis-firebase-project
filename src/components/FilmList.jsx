@@ -17,7 +17,7 @@ function FilmList() {
       }
     };
     fetchFilms();
-  }, []);
+  }, );
 
   const filmCards = films.map((film) => {
     return <FilmCard key={film.id} film={film}></FilmCard>;

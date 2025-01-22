@@ -1,4 +1,11 @@
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  deleteDoc,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
 import db from "./config";
 
 /**
@@ -15,17 +22,48 @@ export const getAllDocuments = async (collectionName) => {
       ...doc.data(),
     }));
   } catch (e) {
-    console.error("Error fetching documents from Firestore:", e);
+    console.error("Error fetching documents from Firestore: ", e);
     throw e;
   }
 };
 
+/**
+ *
+ * @param {string} collectionName - Collection name
+ * @param {Object} document  - Document to add
+ */
+//?Hacer un setDoc con Id personalizada (ej:nameyear)
 export const addDocument = async (collectionName, document) => {
   try {
     const colRef = collection(db, collectionName);
     const docRef = await addDoc(colRef, document);
   } catch (e) {
-    console.error("Error adding document to Firestore", e);
+    console.error("Error adding document to Firestore: ", e);
     throw e;
+  }
+};
+/**
+ *
+ * @param {string} collectionName - Collection Name
+ * @param {Object} document  - Document to delete
+ */
+export const delDocument = async (collectionName, document) => {
+  try {
+    const docRef = doc(db, collectionName, document.id);
+    await deleteDoc(docRef);
+  } catch (e) {
+    console.error("Error deleting document from Firestore: ", e);
+  }
+};
+
+export const updateDocument = async (collectionName, document) => {
+  try {
+    const docRef = doc(db, collectionName, document.id);
+    await updateDoc(docRef, {
+      year: 2020,
+      director: "Clint Eastwood",
+    });
+  } catch (e) {
+    console.error("Error updating document: ", e);
   }
 };
