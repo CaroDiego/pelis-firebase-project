@@ -5,6 +5,7 @@ import {
   deleteDoc,
   doc,
   updateDoc,
+  setDoc,
 } from "firebase/firestore";
 import db from "./config";
 
@@ -33,10 +34,10 @@ export const getAllDocuments = async (collectionName) => {
  * @param {Object} document  - Document to add
  */
 //?Hacer un setDoc con Id personalizada (ej:nameyear)
-export const addDocument = async (collectionName, document) => {
+export const setDocument = async (collectionName, document) => {
   try {
-    const colRef = collection(db, collectionName);
-    const docRef = await addDoc(colRef, document);
+    const docRef = doc(db, collectionName, document.id);
+    await setDoc(docRef, document);
   } catch (e) {
     console.error("Error adding document to Firestore: ", e);
     throw e;
