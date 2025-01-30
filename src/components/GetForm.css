@@ -1,86 +1,87 @@
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px; /* Crea espacio uniforme entre los elementos del formulario */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-.add-film-button {
-  --main-focus: #2d8cf0;
-  --font-color: #323232;
-  --bg-color-sub: #dedede;
-  --bg-color: #eee;
-  --main-color: #323232;
-  position: relative;
-  width: 150px;
-  height: 40px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  border: 2px solid var(--main-color);
-  box-shadow: 4px 4px var(--main-color);
-  background-color: var(--bg-color);
-  border-radius: 10px;
-  overflow: hidden;
-  padding-top: auto;
+.form-container {
+  width: 320px;
+  border-radius: 0.75rem;
+  background-color: var(--rich-black);
+  padding: 2rem;
+  color: var(--anti-flash-white);
 }
 
-.add-film-button, .add-film-button___text, .add-film-button___icon {
-  transition: all 0.3s;
+.title {
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
 }
 
-.add-film-button .add-film-button___text {
-  transform: translateX(22px);
-  color: var(--font-color);
+.form {
+  margin-top: 1.5rem;
+}
+
+.input-group {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.input-group label {
+  display: block;
+  color: var(--cadet-gray);
+  margin-bottom: 4px;
+}
+
+.input-group input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.75rem; /* Match button's padding (previously 0.75rem 1rem) */
+  border: 1px solid var(--charcoal);
+  border-radius: 0.375rem;
+  background-color: var(--rich-black);
+  color: var(--anti-flash-white);
+  font-weight: 600;
+  outline: 0;
+}
+
+.input-group input:focus {
+  border-color: var(--tropical-indigo);
+}
+
+.submit-film {
+  margin-top: 20px;
+  display: block;
+  width: 100%;
+  background-color: var(--tropical-indigo);
+  padding: 0.75rem;
+  text-align: center;
+  color: var(--rich-black);
+  border-radius: 0.375rem;
   font-weight: 600;
 }
 
-.add-film-button .add-film-button___icon {
-   position: absolute;
-   transform: translateX(109px);
-   height: 100%;
-   width: 39px;
-   background-color: var(--bg-color-sub);
-   display: flex;
-   align-items: center;
-   justify-content: center;   
+.submit-film:hover {
+  background-color: rgba(
+    167,
+    139,
+    250,
+    0.9
+  ); /* Versión ligeramente más clara/transparente */
+  transform: translateY(-1px); /* Efecto de elevación sutil */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
 }
 
-.add-film-button .svg {
-  width: 20px;
-  fill: var(--main-color);
+.submit-film {
+  transition: background-color 0.2s ease, transform 0.2s ease,
+    box-shadow 1s ease;
+  cursor: pointer; /* Cambia el cursor a mano */
 }
 
-.add-film-button:hover {
-  background: var(--bg-color);
-}
-
-.add-film-button:hover .add-film-button___text {
-  color: transparent;
-}
-
-.add-film-button:hover .add-film-button___icon {
-  width: 148px;
-  transform: translateX(0);
-}
-
-.add-film-button:active {
-  transform: translate(3px, 3px);
-  box-shadow: 0px 0px var(--main-color);
-}
-
-/* Estado deshabilitado */
-.add-film-button:disabled {
-  background-color: #cccccc; /* Color de fondo apagado */
-  color: #777777; /* Texto desactivado */
-  border: 2px solid #bbbbbb; /* Borde más claro */
-  box-shadow: none; /* Sin sombra */
-  cursor: no-drop; /* Cursor deshabilitado */
-}
-
-.add-film-button:disabled .add-film-button___text,
-.add-film-button:disabled .add-film-button___icon {
-  color: #aaaaaa; /* Color apagado para los textos */
-}
-
-.add-film-button:disabled .add-film-button___icon {
-  background-color: #dddddd; /* Color apagado para el ícono */
+.submit-film:disabled {
+  background-color: var(--charcoal); /* Color de fondo apagado */
+  color: var(--cadet-gray); /* Color de texto grisáceo */
+  cursor: not-allowed; /* Cursor de prohibido */
+  opacity: 0.7; /* Ligera transparencia */
 }

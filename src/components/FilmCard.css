@@ -11,7 +11,7 @@
 }
 
 .film-container:hover .film-poster {
-  outline-color: var(--baby-blue);
+  outline-color: var(--tropical-indigo);
   transform: scale(1.05);
 }
 

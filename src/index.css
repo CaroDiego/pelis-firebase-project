@@ -21,4 +21,9 @@ $gradient-radial: radial-gradient(#193e36ff, #90c2ddff, #d49e32ff, #c299b7ff, #c
     --goldenrod: #d49e32ff;
     --lion: #c29b70ff;
     --lilac: #c299b7ff;
+    --rich-black: #111827ff;
+    --anti-flash-white: #F3F4F6ff;
+    --cadet-gray: #9CA3AFff;
+    --charcoal: #374151ff;
+    --tropical-indigo: #A78BFAff;
 }

@@ -8,6 +8,7 @@ function GetForm() {
   const [genre, setGenre] = useState("");
   const [director, setDirector] = useState("");
 
+
   const fieldsComplete = name && poster && year && genre && director;
 
   const nameChange = (e) => {
@@ -53,37 +54,40 @@ function GetForm() {
     }
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <fieldset>
-          <label htmlFor="name-film">Film Name: </label>
+    <div className="form-container">
+      <p className="title">Add Film</p>
+      <form onSubmit={handleSubmit} className="form">
+        <div className="input-group">
+          <label htmlFor="name-film">Film Name</label>
           <input
             type="text"
             id="name-film"
             value={name}
             onChange={nameChange}
           />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="poster-film">Poster: </label>
+        </div>
+        <div className="input-group">
+          <label htmlFor="poster-film">Poster</label>
           <input
-            type="text"
+            type="url"
             id="poster-film"
             value={poster}
             onChange={posterChange}
           ></input>
-        </fieldset>
-        <fieldset>
-          <label htmlFor="year-film">Year: </label>
+        </div>
+        <div className="input-group">
+          <label htmlFor="year-film">Year</label>
           <input
-            type="text"
+            type="number"
             id="year-film"
             value={year}
             onChange={yearChange}
+            min="1800"
+            max={new Date().getFullYear()}
           />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="genre-film">Genre: </label>
+        </div>
+        <div className="input-group">
+          <label htmlFor="genre-film">Genre</label>
           <input
             type="text"
             placeholder="Separate by commas"
@@ -91,9 +95,9 @@ function GetForm() {
             value={genre}
             onChange={genreChange}
           />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="director-film">Director: </label>
+        </div>
+        <div className="input-group">
+          <label htmlFor="director-film">Director</label>
           <input
             type="text"
             placeholder="Separate by commas"
@@ -101,30 +105,13 @@ function GetForm() {
             value={director}
             onChange={directorChange}
           />
-        </fieldset>
+        </div>
         <button
-          className="add-film-button"
+          className="submit-film"
           type="submit"
           disabled={!fieldsComplete}
         >
-          <span className="add-film-button___text">Add Film</span>
-          <span className="add-film-button___icon">
-            <svg
-              className="svg"
-              fill="none"
-              height={24}
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <line x1="12" x2="12" y1="5" y2="19"></line>
-              <line x1="5" x2="19" y1="12" y2="12"></line>
-            </svg>
-          </span>
+          Add Film
         </button>
       </form>
     </div>
