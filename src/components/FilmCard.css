@@ -1,4 +1,55 @@
+.film-container {
+  position: relative;
+  display: inline-block;
+}
 
-.film-poster{
-    width: 200px;
+.film-poster {
+  width: 200px;
+  outline: 3px solid transparent;
+  border-radius: 8px;
+  transition: outline-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.film-container:hover .film-poster {
+  outline-color: var(--baby-blue);
+  transform: scale(1.05);
+}
+
+.film-menu {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  padding: 8px; 
+  border-radius: 8px;
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  gap: 8px; 
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  min-width: 80px; 
+}
+
+.film-container:hover .film-menu {
+  opacity: 1;
+}
+
+.film-menu button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  width: 26px; 
+  height: 26px;
+}
+
+.film-menu button:hover {
+  color: #EBEBEB; 
+  transform: scale(1.2); 
 }

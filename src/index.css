@@ -1,3 +1,24 @@
 body {
-    background-color: #273469;
+    background-color: var(--brunswick-green);
+}
+
+/* SCSS Gradient */
+/* $gradient-top: linear-gradient(0deg, #193e36ff, #90c2ddff, #d49e32ff, #c299b7ff, #c29b70ff, #784185ff);
+$gradient-right: linear-gradient(90deg, #193e36ff, #90c2ddff, #d49e32ff, #c299b7ff, #c29b70ff, #784185ff);
+$gradient-bottom: linear-gradient(180deg, #193e36ff, #90c2ddff, #d49e32ff, #c299b7ff, #c29b70ff, #784185ff);
+$gradient-left: linear-gradient(270deg, #193e36ff, #90c2ddff, #d49e32ff, #c299b7ff, #c29b70ff, #784185ff);
+$gradient-top-right: linear-gradient(45deg, #193e36ff, #90c2ddff, #d49e32ff, #c299b7ff, #c29b70ff, #784185ff);
+$gradient-bottom-right: linear-gradient(135deg, #193e36ff, #90c2ddff, #d49e32ff, #c299b7ff, #c29b70ff, #784185ff);
+$gradient-top-left: linear-gradient(225deg, #193e36ff, #90c2ddff, #d49e32ff, #c299b7ff, #c29b70ff, #784185ff);
+$gradient-bottom-left: linear-gradient(315deg, #193e36ff, #90c2ddff, #d49e32ff, #c299b7ff, #c29b70ff, #784185ff);
+$gradient-radial: radial-gradient(#193e36ff, #90c2ddff, #d49e32ff, #c299b7ff, #c29b70ff, #784185ff); */
+
+
+:root {
+    --brunswick-green: #193e36ff;
+    --eminence: #784185ff;
+    --baby-blue: #90c2ddff;
+    --goldenrod: #d49e32ff;
+    --lion: #c29b70ff;
+    --lilac: #c299b7ff;
 }

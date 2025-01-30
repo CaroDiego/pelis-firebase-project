@@ -32,9 +32,8 @@ function GetForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const idFormat = name.toLowerCase().replace(/\s+/g, "-") + "-" + year;
+    const id = name.toLowerCase().replace(/\s+/g, "-") + "-" + year;
     const film = {
-      id: idFormat,
       name: name,
       poster: poster,
       year: year,
@@ -42,7 +41,7 @@ function GetForm() {
       director: director.split(",").map((director) => director.trim()),
     };
     try {
-      await setDocument("films", film);
+      await setDocument("films", id, film);
       //*Do Something
       setName("");
       setPoster("");

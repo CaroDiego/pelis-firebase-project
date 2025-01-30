@@ -2,13 +2,16 @@ import React from "react";
 import "./FilmCard.css";
 import { useState, useEffect } from "react";
 import { delDocument, updateDocument } from "../firebase/firestore";
-
+import { Link } from "react-router-dom";
+import { Favorite, MoreHoriz } from "@mui/icons-material";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 function FilmCard(props) {
   const { film } = props;
 
   const [genre, setGenre] = useState("");
   const [director, setDirector] = useState("");
-  const deleteFilm = async (e) => {
+
+  const deleteFilm = async () => {
     try {
       await delDocument("films", film);
     } catch (error) {
@@ -16,10 +19,10 @@ function FilmCard(props) {
     }
   };
 
-  const updateFilm = async (e) => {
+  const updateFilm = async () => {
     try {
       await updateDocument("films", film);
-    } catch (error) {
+    } catch (e) {
       console.error("Error updating document:", e);
     }
   };
@@ -47,10 +50,24 @@ function FilmCard(props) {
   }, [film]);
 
   return film.id ? (
-    <ul className="film-card">
-      <h2 className="film-name">{film.name}</h2>
-      <img src={film.poster} alt={film.name} className="film-poster" />
-      <h3 className="film-director">{director}</h3>
+    <div className="film-container">
+      {/* <h2 className="film-name">{film.name}</h2> */}
+      <Link to={`/film/${film.id}`} className="film-link">
+        <img src={film.poster} alt={film.name} className="film-poster" />
+      </Link>
+      <div className="film-menu">
+        <button>
+          <VisibilityIcon />
+        </button>
+        <button>
+          <Favorite />
+        </button>
+        <button>
+          <MoreHoriz />
+        </button>
+      </div>
+
+      {/* <h3 className="film-director">{director}</h3>
       <h3 className="film-genre">{genre}</h3>
       <h3 className="film-year">{film.year}</h3>
       <button className="edit-button" onClick={updateFilm}>
@@ -59,8 +76,8 @@ function FilmCard(props) {
       <span> </span>
       <button className="delete-button" onClick={deleteFilm}>
         Delete
-      </button>
-    </ul>
+      </button> */}
+    </div>
   ) : (
     <p className="loading">Loading...</p>
   );

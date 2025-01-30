@@ -1,11 +1,11 @@
 import {
   collection,
-  addDoc,
   getDocs,
   deleteDoc,
   doc,
   updateDoc,
   setDoc,
+  getDoc,
 } from "firebase/firestore";
 import db from "./config";
 
@@ -29,14 +29,30 @@ export const getAllDocuments = async (collectionName) => {
 };
 
 /**
- *
+ * Obtains a document from a given collection by id
+ * @param {string } collectionName - Collection name
+ * @param {string} id - Id of the document to search
+ */
+export const getDocument = async (collectionName, id) => {
+  try {
+    const docRef = doc(db, collectionName, id);
+    const docSnap = await getDoc(docRef);
+    return docSnap;
+  } catch (e) {
+    console.error("Error fetching document from Firestore: ", e);
+    throw e;
+  }
+};
+
+/**
+ * Set a document with a costum id 
  * @param {string} collectionName - Collection name
+ * @param {string} id - Id of the document (name-year)
  * @param {Object} document  - Document to add
  */
-//?Hacer un setDoc con Id personalizada (ej:nameyear)
-export const setDocument = async (collectionName, document) => {
+export const setDocument = async (collectionName, id, document) => {
   try {
-    const docRef = doc(db, collectionName, document.id);
+    const docRef = doc(db, collectionName, id);
     await setDoc(docRef, document);
   } catch (e) {
     console.error("Error adding document to Firestore: ", e);
