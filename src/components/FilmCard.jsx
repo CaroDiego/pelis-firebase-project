@@ -36,7 +36,7 @@ function FilmCard(props) {
       setWatch((prev) => !prev);
     }
   };
-  
+
   const deleteFilm = async () => {
     try {
       await delDocument("films", film);
@@ -88,9 +88,19 @@ function FilmCard(props) {
         <button onClick={changeLiked} className={like ? "liked" : ""}>
           <Favorite />
         </button>
-        <button>
-          <MoreHoriz />
-        </button>
+        <div className="more-tooltip">
+          <button>
+            <MoreHoriz />
+          </button>
+          <div className="tooltip-content">
+            <ul className="tooltip-list">
+              <li>Hola</li>
+              <li>Edit</li>
+              <li>Hola</li>
+              <li onClick={deleteFilm}>Delete</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       {/* <h3 className="film-director">{director}</h3>
