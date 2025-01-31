@@ -17,14 +17,13 @@ function FilmList() {
       }
     };
     fetchFilms();
-  }, );
+  });
 
   const filmCards = films.map((film) => {
     return <FilmCard key={film.id} film={film}></FilmCard>;
   });
   return (
     <div>
-      <h1>Films</h1>
       <ul className="films-list">{filmCards}</ul>
     </div>
   );

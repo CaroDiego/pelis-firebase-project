@@ -1,5 +1,5 @@
 body {
-    background-color: var(--brunswick-green);
+  background-color: var(--brunswick-green);
 }
 
 /* SCSS Gradient */
@@ -13,17 +13,32 @@ $gradient-top-left: linear-gradient(225deg, #193e36ff, #90c2ddff, #d49e32ff, #c2
 $gradient-bottom-left: linear-gradient(315deg, #193e36ff, #90c2ddff, #d49e32ff, #c299b7ff, #c29b70ff, #784185ff);
 $gradient-radial: radial-gradient(#193e36ff, #90c2ddff, #d49e32ff, #c299b7ff, #c29b70ff, #784185ff); */
 
-
 :root {
-    --brunswick-green: #193e36ff;
-    --eminence: #784185ff;
-    --baby-blue: #90c2ddff;
-    --goldenrod: #d49e32ff;
-    --lion: #c29b70ff;
-    --lilac: #c299b7ff;
-    --rich-black: #111827ff;
-    --anti-flash-white: #F3F4F6ff;
-    --cadet-gray: #9CA3AFff;
-    --charcoal: #374151ff;
-    --tropical-indigo: #A78BFAff;
+  --page-max-width:100%;
+  --page-side-margin: 2rem;
+  --page-side-margin-mobile: 1rem;
+  --brunswick-green: #193e36ff;
+  --eminence: #784185ff;
+  --baby-blue: #90c2ddff;
+  --goldenrod: #d49e32ff;
+  --lion: #c29b70ff;
+  --lilac: #c299b7ff;
+  --rich-black: #111827ff;
+  --anti-flash-white: #f3f4f6ff;
+  --cadet-gray: #9ca3afff;
+  --charcoal: #374151ff;
+  --tropical-indigo: #a78bfaff;
+}
+
+.page-layout {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--page-side-margin);
+  max-width: var(--page-max-width);
+}
+
+@media (max-width: 768px) {
+  .page-layout {
+    padding: 0 var(--page-side-margin-mobile);
+  }
 }

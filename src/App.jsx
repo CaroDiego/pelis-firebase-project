@@ -7,18 +7,39 @@ const FilmsPage = lazy(() => import("./pages/FilmsPage"));
 const FilmPage = lazy(() => import("./pages/FilmPage"));
 
 function App() {
+  const Layout = ({ children }) => (
+    <main className="page-layout">{children}</main>
+  );
+
   return (
-    // <>
-    //   <div>
-    //     <GetForm></GetForm>
-    //     <FilmList></FilmList>
-    //   </div>
-    // </>
     <Suspense fallback={<h1>Loading...</h1>}>
       <Routes>
-        <Route path="/" element={<HomePage />}></Route>
-        <Route path="/films" element={<FilmsPage />}></Route>
-        <Route path="/film/:id" element={<FilmPage />}></Route>
+        <Route
+          path="/"
+          element={
+            <Layout>
+              {" "}
+              <HomePage />
+            </Layout>
+          }
+        ></Route>
+        <Route
+          path="/films"
+          element={
+            <Layout>
+              {" "}
+              <FilmsPage />
+            </Layout>
+          }
+        ></Route>
+        <Route
+          path="/film/:id"
+          element={
+            <Layout>
+              <FilmPage />
+            </Layout>
+          }
+        ></Route>
       </Routes>
     </Suspense>
   );

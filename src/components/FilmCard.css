@@ -5,6 +5,7 @@
 
 .film-poster {
   width: 200px;
+  height: 300px;
   outline: 3px solid transparent;
   border-radius: 8px;
   transition: outline-color 0.2s ease-in-out, transform 0.2s ease-in-out;
