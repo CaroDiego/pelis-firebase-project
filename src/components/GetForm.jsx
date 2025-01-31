@@ -41,6 +41,8 @@ function GetForm(props) {
       year: year,
       genre: genre.split(",").map((genre) => genre.trim()),
       director: director.split(",").map((director) => director.trim()),
+      liked: false,
+      watched: false,
     };
     try {
       await setDocument("films", id, film);
