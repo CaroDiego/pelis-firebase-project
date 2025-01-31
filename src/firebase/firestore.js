@@ -45,7 +45,7 @@ export const getDocument = async (collectionName, id) => {
 };
 
 /**
- * Set a document with a costum id 
+ * Set a document with a costum id
  * @param {string} collectionName - Collection name
  * @param {string} id - Id of the document (name-year)
  * @param {Object} document  - Document to add
@@ -73,13 +73,10 @@ export const delDocument = async (collectionName, document) => {
   }
 };
 
-export const updateDocument = async (collectionName, document) => {
+export const updateDocument = async (collectionName, id, updates) => {
   try {
-    const docRef = doc(db, collectionName, document.id);
-    await updateDoc(docRef, {
-      year: 2020,
-      director: "Clint Eastwood",
-    });
+    const docRef = doc(db, collectionName, id);
+    await updateDoc(docRef, updates);
   } catch (e) {
     console.error("Error updating document: ", e);
   }

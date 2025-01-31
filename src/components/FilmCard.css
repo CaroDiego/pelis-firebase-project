@@ -54,3 +54,10 @@
   color: #EBEBEB; 
   transform: scale(1.2); 
 }
+.film-menu button.liked {
+  color: var(--citron);
+}
+
+.film-menu button.watched {
+  color: var(--carolina-blue);
+}

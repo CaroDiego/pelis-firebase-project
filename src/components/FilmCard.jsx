@@ -5,12 +5,38 @@ import { delDocument, updateDocument } from "../firebase/firestore";
 import { Link } from "react-router-dom";
 import { Favorite, MoreHoriz } from "@mui/icons-material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+
 function FilmCard(props) {
   const { film } = props;
 
   const [genre, setGenre] = useState("");
   const [director, setDirector] = useState("");
 
+  const [like, setLike] = useState(film.liked);
+  const [watch, setWatch] = useState(film.watched);
+
+  const changeLiked = async () => {
+    try {
+      const newLike = !like;
+      setLike(newLike);
+      await updateDocument("films", film.id, { liked: newLike });
+    } catch (error) {
+      console.error("Error updating document:", error);
+      setLike((prev) => !prev);
+    }
+  };
+
+  const changeWatched = async () => {
+    try {
+      const newWatch = !watch;
+      setWatch(newWatch);
+      await updateDocument("films", film.id, { watched: newWatch });
+    } catch (error) {
+      console.error("Error updating document:", error);
+      setWatch((prev) => !prev);
+    }
+  };
+  
   const deleteFilm = async () => {
     try {
       await delDocument("films", film);
@@ -56,10 +82,10 @@ function FilmCard(props) {
         <img src={film.poster} alt={film.name} className="film-poster" />
       </Link>
       <div className="film-menu">
-        <button>
+        <button onClick={changeWatched} className={watch ? "watched" : ""}>
           <VisibilityIcon />
         </button>
-        <button>
+        <button onClick={changeLiked} className={like ? "liked" : ""}>
           <Favorite />
         </button>
         <button>
