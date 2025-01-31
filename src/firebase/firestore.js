@@ -59,20 +59,27 @@ export const setDocument = async (collectionName, id, document) => {
     throw e;
   }
 };
+
 /**
- *
+ * Delete a document by id
  * @param {string} collectionName - Collection Name
- * @param {Object} document  - Document to delete
+ * @param {string} id  - id of the document to delete
  */
-export const delDocument = async (collectionName, document) => {
+export const delDocument = async (collectionName, id) => {
   try {
-    const docRef = doc(db, collectionName, document.id);
+    const docRef = doc(db, collectionName, id);
     await deleteDoc(docRef);
   } catch (e) {
     console.error("Error deleting document from Firestore: ", e);
   }
 };
 
+/**
+ * 
+ * @param {string} collectionName - Collection Name
+ * @param {string} id - id of the document to update
+ * @param {Object} updates - Changes to be updated 
+ */
 export const updateDocument = async (collectionName, document) => {
   try {
     const docRef = doc(db, collectionName, document.id);
