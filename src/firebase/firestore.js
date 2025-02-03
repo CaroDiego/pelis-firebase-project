@@ -75,7 +75,7 @@ export const delDocument = async (collectionName, id) => {
 };
 
 /**
- * 
+ * Update a document
  * @param {string} collectionName - Collection Name
  * @param {string} id - id of the document to update
  * @param {Object} updates - Changes to be updated 
