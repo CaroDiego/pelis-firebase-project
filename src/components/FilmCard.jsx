@@ -5,6 +5,7 @@ import { delDocument, updateDocument } from "../firebase/firestore";
 import { Link } from "react-router-dom";
 import { Favorite, MoreHoriz } from "@mui/icons-material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import AddToList from "./AddToList";
 
 function FilmCard(props) {
   const { film } = props;
@@ -14,6 +15,12 @@ function FilmCard(props) {
 
   const [like, setLike] = useState(film.liked);
   const [watch, setWatch] = useState(film.watched);
+
+  const [seen, setSeen] = useState(false);
+
+  function togglePop() {
+    setSeen(!seen);
+  }
 
   const changeLiked = async () => {
     try {
@@ -94,9 +101,8 @@ function FilmCard(props) {
           </button>
           <div className="tooltip-content">
             <ul className="tooltip-list">
-              <li>Hola</li>
+              <li onClick={togglePop}>Add to list</li>
               <li>Edit</li>
-              <li>Hola</li>
               <li onClick={deleteFilm}>Delete</li>
             </ul>
           </div>
@@ -113,6 +119,7 @@ function FilmCard(props) {
       <button className="delete-button" onClick={deleteFilm}>
         Delete
       </button> */}
+      {seen ? <AddToList film={film} toggle={togglePop}></AddToList> : null}
     </div>
   ) : (
     <p className="loading">Loading...</p>

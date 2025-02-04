@@ -3,6 +3,9 @@
 *::after {
   box-sizing: border-box;
 }
+
+/* TODO Hacer que el fondo no se pueda clicar*/
+
 .popup-overlay {
   position: fixed;
   top: 0;

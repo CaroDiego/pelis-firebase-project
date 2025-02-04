@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { setDocument } from "../firebase/firestore";
 import "./GetForm.css";
 import CloseIcon from "@mui/icons-material/Close";
@@ -52,10 +52,23 @@ function GetForm(props) {
       setYear("");
       setGenre("");
       setDirector("");
-    } catch (error) {
+    } catch (e) {
       console.error("Error adding document:", e);
     }
   };
+
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key === "Escape") {
+        props.toggle();
+      }
+    };
+    window.addEventListener("keydown", handleKeyPress);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [props]);
   return (
     <div className="popup-overlay">
       <div className="form-container">
@@ -125,5 +138,4 @@ function GetForm(props) {
     </div>
   );
 }
-
 export default GetForm;

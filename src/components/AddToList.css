@@ -1,0 +1,22 @@
+.list-options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-options li{
+    padding: 5px;
+    cursor: pointer;
+    border-bottom: #ebebeb 1px solid;
+}
+
+.list-options li:last-child {
+  border-bottom: none;
+}
+
+.list-options li:hover {
+  color: var(--tropical-indigo);
+}
+
+
+.lis
