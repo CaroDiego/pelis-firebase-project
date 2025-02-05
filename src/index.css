@@ -1,6 +1,6 @@
 body {
   background-color: var(--brunswick-green);
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* SCSS Gradient */
@@ -19,7 +19,7 @@ $gradient-radial: radial-gradient(#193e36ff, #90c2ddff, #d49e32ff, #c299b7ff, #c
   --page-side-margin: 2rem;
   --page-side-margin-mobile: 1rem;
   --brunswick-green: #193e36ff;
-  --eminence: #CC2936ff;
+  --eminence: #cc2936ff;
   --carolina-blue: #63a9cfff;
   --goldenrod: #d49e32ff;
   --lion: #c29b70ff;
@@ -30,6 +30,7 @@ $gradient-radial: radial-gradient(#193e36ff, #90c2ddff, #d49e32ff, #c299b7ff, #c
   --charcoal: #374151ff;
   --tropical-indigo: #a78bfaff;
   --citron: #cfd186ff;
+  --emerald: #09D792ff;
 }
 
 .page-layout {

@@ -23,7 +23,7 @@
   color: var(--eminence);
 }
 .add-icon {
-  color: green;
+  color: var(--emerald);
 }
 
 .text-in-list {
@@ -31,5 +31,5 @@
 }
 
 .text-not-in-list {
-  color: green;
+  color: var(--emerald);
 }
