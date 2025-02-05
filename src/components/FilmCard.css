@@ -120,3 +120,7 @@
 .tooltip-list li:last-child:hover{
   background-color: var(--eminence);
 }
+
+body.popup-active .film-menu {
+  pointer-events: none;
+}

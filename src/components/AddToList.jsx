@@ -69,7 +69,7 @@ function AddToList(props) {
   };
 
   return (
-    <div className="popup-overlay">
+    <div className="popup-overlay active">
       <div className="form-container">
         <button className="close-button" onClick={handleClose}>
           <CloseIcon />

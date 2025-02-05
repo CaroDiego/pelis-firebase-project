@@ -20,6 +20,11 @@ function FilmCard(props) {
 
   function togglePop() {
     setSeen(!seen);
+    if (!seen) {
+      document.body.classList.add("popup-active");
+    } else {
+      document.body.classList.remove("popup-active");
+    }
   }
 
   const changeLiked = async () => {
@@ -108,17 +113,6 @@ function FilmCard(props) {
           </div>
         </div>
       </div>
-
-      {/* <h3 className="film-director">{director}</h3>
-      <h3 className="film-genre">{genre}</h3>
-      <h3 className="film-year">{film.year}</h3>
-      <button className="edit-button" onClick={updateFilm}>
-        Edit
-      </button>
-      <span> </span>
-      <button className="delete-button" onClick={deleteFilm}>
-        Delete
-      </button> */}
       {seen ? <AddToList film={film} toggle={togglePop}></AddToList> : null}
     </div>
   ) : (

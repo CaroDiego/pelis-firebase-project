@@ -8,6 +8,11 @@ function FilmsPage() {
 
   function togglePop() {
     setSeen(!seen);
+    if (!seen) {
+      document.body.classList.add("popup-active");
+    } else {
+      document.body.classList.remove("popup-active");
+    }
   }
 
   return (
