@@ -1,0 +1,40 @@
+#error-page {
+  height: 100vh;
+  color: var(--anti-flash-white);
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+#error-page h1 {
+  font-size: 5rem;
+  margin-bottom: 20px;
+  color: var(--eminence);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#error-page h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+    color: var(--eminence);
+
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+#error-page a {
+  font-size: 1.5rem;
+  color: var(--rich-black);
+  background-color: var(--goldenrod);
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+#error-page a:hover {
+  background-color: rgba(212, 158, 50, 0.9);
+}

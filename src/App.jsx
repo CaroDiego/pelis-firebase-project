@@ -1,11 +1,10 @@
 import "./App.css";
-import HomePage from "./pages/HomePage";
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 
 const FilmsPage = lazy(() => import("./pages/FilmsPage"));
 const FilmPage = lazy(() => import("./pages/FilmPage"));
-
+const ErrorPage = lazy(() => import("./pages/ErrorPage"));
 function App() {
   const Layout = ({ children }) => (
     <main className="page-layout">{children}</main>
@@ -16,15 +15,6 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={
-            <Layout>
-              {" "}
-              <HomePage />
-            </Layout>
-          }
-        ></Route>
-        <Route
-          path="/films"
           element={
             <Layout>
               {" "}
@@ -39,7 +29,8 @@ function App() {
               <FilmPage />
             </Layout>
           }
-        ></Route>
+        ></Route>{" "}
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Suspense>
   );
