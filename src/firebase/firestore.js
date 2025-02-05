@@ -12,7 +12,7 @@ import db from "./config";
 /**
  * Obtains all the documents from a given collection
  * @param {string} collectionName - Collection name
- * @returns {Promise<Array>} - Array of the data
+ * @returns An array with all the data of the collection
  */
 export const getAllDocuments = async (collectionName) => {
   try {
