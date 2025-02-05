@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { ListContext } from "../context/list.context";
-import CheckIcon from "@mui/icons-material/Check";
+import AddIcon from "@mui/icons-material/Add";
+import DeleteIcon from "@mui/icons-material/Delete";
+import "./ListOption.css";
 
 function ListOption(props) {
   const { film, list } = props;
-  const { selectedLists, setSelectedLists } =
-    useContext(ListContext);
+  const { selectedLists, setSelectedLists } = useContext(ListContext);
 
   const [filmInList, setFilmInList] = useState(false); // If the film is in the list
 
@@ -23,10 +24,29 @@ function ListOption(props) {
 
   return (
     <div>
-      <li className="list-item" onClick={selectList}>
-        {list.name}
-        {selectedLists.includes(list.id) && <CheckIcon />}
-        {filmInList && <CheckIcon />}
+      <li
+        className={`list-item ${filmInList ? "film-in-list" : ""}`}
+        onClick={selectList}
+      >
+        <span
+          className={`list-name ${
+            selectedLists.includes(list.id) && filmInList
+              ? "text-in-list"
+              : selectedLists.includes(list.id) && !filmInList
+              ? "text-not-in-list"
+              : ""
+          }`}
+        >
+          {list.name}
+        </span>
+        <span className="icon-container">
+          {selectedLists.includes(list.id) && filmInList && (
+            <DeleteIcon className="delete-icon" />
+          )}
+          {selectedLists.includes(list.id) && !filmInList && (
+            <AddIcon className="add-icon" />
+          )}
+        </span>
       </li>
     </div>
   );

@@ -1,0 +1,35 @@
+.film-in-list {
+  color: var(--goldenrod); /* Light green background */
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px; /* Adjust padding to make the container taller */
+}
+
+.list-name {
+  flex-grow: 1;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  height: 24px; /* Ensure the icon container has a fixed height */
+}
+
+.delete-icon {
+  color: var(--eminence);
+}
+.add-icon {
+  color: green;
+}
+
+.text-in-list {
+  color: var(--eminence); /* Red color */
+}
+
+.text-not-in-list {
+  color: green;
+}
