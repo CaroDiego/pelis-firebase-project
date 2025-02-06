@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import {
   getAllDocuments,
+  getDocument,
   setDocument,
   updateDocument,
 } from "../firebase/firestore";
@@ -40,6 +41,23 @@ function FilmProviderWrapper(props) {
       setFilms(filmArr);
     } catch (e) {
       console.error("Error fetching films:", e);
+    }
+  };
+
+  /**
+   * Fetches a film document from the "films" collection by its ID.
+   *
+   * @param {string} id - The ID of the film to fetch.
+   * @returns {Promise<Object>} A promise that resolves to the film data.
+   * @throws {Error} If the film is not found or there is an error fetching the film.
+   */
+  const fetchFilm = async (id) => {
+    try {
+      const filmDoc = await getDocument("films", id);
+      return filmDoc;
+    } catch (error) {
+      console.error("Error fetching film:", error);
+      throw error;
     }
   };
 
@@ -89,7 +107,14 @@ function FilmProviderWrapper(props) {
 
   return (
     <FilmContext.Provider
-      value={{ films, addFilm, getFilms, changeLiked, changeWatched }}
+      value={{
+        films,
+        addFilm,
+        getFilms,
+        changeLiked,
+        changeWatched,
+        fetchFilm,
+      }}
     >
       {props.children}
     </FilmContext.Provider>

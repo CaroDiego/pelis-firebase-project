@@ -31,6 +31,7 @@ function App() {
           }
         ></Route>{" "}
         <Route path="*" element={<ErrorPage />} />
+        <Route path="/film/*" element={<ErrorPage />} />
       </Routes>
     </Suspense>
   );

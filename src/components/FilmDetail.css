@@ -1,0 +1,144 @@
+.film-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #1b1f24;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  color: #fbfff1;
+}
+
+.film-detail-poster {
+  width: 180px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(255, 165, 133, 0.5);
+}
+
+.film-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+  padding-right: 30px; /* Espacio para separar del lado derecho */
+}
+
+.film-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffa585;
+  margin-bottom: 5px;
+}
+
+.film-year {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #669bbc;
+  margin-bottom: 5px;
+}
+
+.film-genres {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap; /* Allow genres to wrap if there are too many */
+}
+
+.film-genre {
+  padding: 5px 10px;
+  border-radius: 8px;
+  background-color: rgba(148, 210, 189, 0.2); /* Light green background */
+  color: #94d2bd;
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: capitalize; /* Optional: capitalizes the first letter of each word */
+}
+
+.film-directors {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap; /* Allow genres to wrap if there are too many */
+}
+
+.film-director {
+  padding: 5px 10px;
+  border-radius: 8px;
+  background-color: rgba(148, 210, 189, 0.2); /* Light green background */
+  color: #94d2bd;
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: capitalize; /* Optional: capitalizes the first letter of each word */
+}
+
+
+.film-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.film-watched, .film-liked {
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.film-watched {
+  background-color: rgba(148, 210, 189, 0.2);
+  color: #94d2bd;
+}
+
+.film-liked {
+  background-color: rgba(255, 165, 133, 0.2);
+  color: #ffa585;
+}
+
+/* BOTÓN PARA AÑADIR A LISTAS */
+.add-to-list-btn {
+  padding: 10px 15px;
+  background-color: #669bbc;
+  color: #1b1f24;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-to-list-btn:hover {
+  background-color: #94d2bd;
+  color: #003049;
+}
+
+.film-actions button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+}
+
+.film-actions button:hover {
+  color: #ebebeb;
+  transform: scale(1.2);
+}
+.film-actions button.liked {
+  color: var(--citron);
+}
+
+.film-actions button.watched {
+  color: var(--carolina-blue);
+}

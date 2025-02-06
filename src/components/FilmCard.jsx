@@ -13,8 +13,6 @@ function FilmCard(props) {
   const { changeLiked, changeWatched } = useContext(FilmContext);
   const { film } = props;
 
-  const [genre, setGenre] = useState("");
-  const [director, setDirector] = useState("");
 
   const [like, setLike] = useState(film.liked);
   const [watch, setWatch] = useState(film.watched);
@@ -48,35 +46,6 @@ function FilmCard(props) {
     }
   };
 
-  const updateFilm = async () => {
-    try {
-      await updateDocument("films", film);
-    } catch (e) {
-      console.error("Error updating document:", e);
-    }
-  };
-
-  const filmGenres = () => {
-    if (Array.isArray(film.genre)) {
-      setGenre(film.genre.join(", "));
-    } else {
-      setGenre(film.genre);
-    }
-  };
-  const filmDirectors = () => {
-    if (Array.isArray(film.director)) {
-      setDirector(film.director.join(", "));
-    } else {
-      setDirector(film.director);
-    }
-  };
-
-  useEffect(() => {
-    if (film) {
-      filmGenres();
-      filmDirectors();
-    }
-  }, [film]);
 
   return film.id ? (
     <div className="film-container">

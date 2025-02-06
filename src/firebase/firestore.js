@@ -29,15 +29,21 @@ export const getAllDocuments = async (collectionName) => {
 };
 
 /**
- * Obtains a document from a given collection by id
- * @param {string } collectionName - Collection name
- * @param {string} id - Id of the document to search
+ * Fetches a document from a specified Firestore collection by its ID.
+ *
+ * @param {string} collectionName - The name of the Firestore collection.
+ * @param {string} id - The ID of the document to fetch.
+ * @returns {Promise<Object>} A promise that resolves to the document snapshot.
+ * @throws Will throw an error if the document cannot be fetched.
  */
 export const getDocument = async (collectionName, id) => {
   try {
     const docRef = doc(db, collectionName, id);
     const docSnap = await getDoc(docRef);
-    return docSnap;
+    if (!docSnap.exists()) {
+      throw new Error("Film not found");
+    }
+    return { id: docSnap.id, ...docSnap.data() };
   } catch (e) {
     console.error("Error fetching document from Firestore: ", e);
     throw e;
@@ -78,7 +84,7 @@ export const delDocument = async (collectionName, id) => {
  * Update a document
  * @param {string} collectionName - Collection Name
  * @param {string} id - id of the document to update
- * @param {Object} updates - Changes to be updated 
+ * @param {Object} updates - Changes to be updated
  */
 export const updateDocument = async (collectionName, id, updates) => {
   try {
