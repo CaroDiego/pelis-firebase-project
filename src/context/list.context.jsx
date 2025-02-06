@@ -25,7 +25,6 @@ function ListsProviderWrapper(props) {
   const addList = async (id, newList) => {
     try {
       await setDocument("lists", id, newList);
-      newList.key = id;
       setLists([newList, ...lists]);
     } catch (e) {
       console.error("Error adding list:", e);

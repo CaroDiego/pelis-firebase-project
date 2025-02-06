@@ -1,22 +1,13 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
 import FilmCard from "./FilmCard";
 import "./FilmList.css";
-import { getAllDocuments } from "../firebase/firestore";
+import { FilmContext } from "../context/film.context";
 
 function FilmList() {
-  const [films, setFilms] = useState([]);
+  const { films, getFilms } = useContext(FilmContext);
 
   useEffect(() => {
-    const fetchFilms = async () => {
-      try {
-        const filmsArr = await getAllDocuments("films");
-        setFilms(filmsArr);
-      } catch (e) {
-        console.error("Error fetching films:", e);
-      }
-    };
-    fetchFilms();
+    getFilms();
   });
 
   const filmCards = films.map((film) => {

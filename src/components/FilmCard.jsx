@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./FilmCard.css";
 import { useState, useEffect } from "react";
 import { delDocument, updateDocument } from "../firebase/firestore";
@@ -6,8 +6,11 @@ import { Link } from "react-router-dom";
 import { Favorite, MoreHoriz } from "@mui/icons-material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import AddToList from "./AddToList";
+import { use } from "react";
+import { FilmContext } from "../context/film.context";
 
 function FilmCard(props) {
+  const { changeLiked, changeWatched } = useContext(FilmContext);
   const { film } = props;
 
   const [genre, setGenre] = useState("");
@@ -27,31 +30,19 @@ function FilmCard(props) {
     }
   }
 
-  const changeLiked = async () => {
-    try {
-      const newLike = !like;
-      setLike(newLike);
-      await updateDocument("films", film.id, { liked: newLike });
-    } catch (error) {
-      console.error("Error updating document:", error);
-      setLike((prev) => !prev);
-    }
+  const handleLikeChange = async () => {
+    await changeLiked(film.id, like);
+    setLike(!like);
   };
 
-  const changeWatched = async () => {
-    try {
-      const newWatch = !watch;
-      setWatch(newWatch);
-      await updateDocument("films", film.id, { watched: newWatch });
-    } catch (error) {
-      console.error("Error updating document:", error);
-      setWatch((prev) => !prev);
-    }
+  const handleWatchChange = async () => {
+    await changeWatched(film.id, watch);
+    setWatch(!watch);
   };
 
   const deleteFilm = async () => {
     try {
-      await delDocument("films", film);
+      await delDocument("films", film.id);
     } catch (error) {
       console.error("Error deleting document:", error);
     }
@@ -94,10 +85,10 @@ function FilmCard(props) {
         <img src={film.poster} alt={film.name} className="film-poster" />
       </Link>
       <div className="film-menu">
-        <button onClick={changeWatched} className={watch ? "watched" : ""}>
+        <button onClick={handleWatchChange} className={watch ? "watched" : ""}>
           <VisibilityIcon />
         </button>
-        <button onClick={changeLiked} className={like ? "liked" : ""}>
+        <button onClick={handleLikeChange} className={like ? "liked" : ""}>
           <Favorite />
         </button>
         <div className="more-tooltip">

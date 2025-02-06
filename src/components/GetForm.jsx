@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { setDocument } from "../firebase/firestore";
 import "./GetForm.css";
 import CloseIcon from "@mui/icons-material/Close";
+import { FilmContext } from "../context/film.context";
 
 function GetForm(props) {
+  const { addFilm } = useContext(FilmContext);
   const [name, setName] = useState("");
   const [poster, setPoster] = useState("");
   const [year, setYear] = useState("");
@@ -45,8 +47,7 @@ function GetForm(props) {
       watched: false,
     };
     try {
-      await setDocument("films", id, film);
-      //*Do Something
+      addFilm(id, film);
       setName("");
       setPoster("");
       setYear("");

@@ -4,13 +4,16 @@ import "./index.css";
 import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import { ListsProviderWrapper } from "./context/list.context.jsx";
+import { FilmProviderWrapper } from "./context/film.context.jsx";
 
 createRoot(document.getElementById("root")).render(
   // <StrictMode>
   <BrowserRouter>
-    <ListsProviderWrapper>
-      <App />
-    </ListsProviderWrapper>
+    <FilmProviderWrapper>
+      <ListsProviderWrapper>
+        <App />
+      </ListsProviderWrapper>
+    </FilmProviderWrapper>
   </BrowserRouter>
   // </StrictMode>
 );

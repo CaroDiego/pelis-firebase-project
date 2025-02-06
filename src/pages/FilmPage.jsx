@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getDocument } from "../firebase/firestore";
 
 function FilmPage() {
@@ -23,7 +23,10 @@ function FilmPage() {
   return (
     <section id="film-page">
       {error ? (
-        <div>ERROR!!!</div>
+        <div>
+          <h2>Ha ocurrido un error</h2>
+          <Link to="/">Volver a la lista</Link>
+        </div>
       ) : (
         <div>
           <h1>{film?.name}</h1>
