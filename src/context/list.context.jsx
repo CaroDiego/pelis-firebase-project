@@ -33,8 +33,7 @@ function ListsProviderWrapper(props) {
 
   const addFilmToList = async (filmId) => {
     for (let i = 0; i < selectedLists.length; i++) {
-      const list = await getDocument("lists", selectedLists[i]);
-      const listData = list.data();
+      const listData = await getDocument("lists", selectedLists[i]);
 
       if (listData && listData.films) {
         const filmInList = listData.films.includes(filmId);
