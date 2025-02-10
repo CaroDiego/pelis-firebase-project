@@ -1,13 +1,14 @@
 .film-details {
   display: flex;
-  align-items: center;
+  flex-direction: row; /* Ensure elements stack vertically */
+  align-items: flex-start; /* Align items to the start (top) of the flex container */
   justify-content: space-between;
   gap: 20px;
   width: 100%;
   max-width: 900px;
   margin: 20px auto;
   padding: 20px;
-  background-color: #1b1f24;
+  background-color: var(--rich-black);
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   color: #fbfff1;
@@ -20,84 +21,89 @@
   box-shadow: 0 4px 10px rgba(255, 165, 133, 0.5);
 }
 
+.film-info-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  width: 100%;
+}
+
 .film-info {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 10px;
   text-align: left;
-  padding-right: 30px; /* Espacio para separar del lado derecho */
+  padding-right: 30px;
+  align-items: flex-start; /* Asegura que todo se alinee arriba */
+}
+
+.film-title-year {
+  display: flex;
+  gap: 10px;
+  align-items: baseline; /* Alinea con la parte superior del contenedor */
+  margin: 0; /* Evita márgenes no deseados */
 }
 
 .film-title {
   font-size: 2rem;
   font-weight: 700;
   color: #ffa585;
-  margin-bottom: 5px;
+  margin: 0; /* Elimina margen para evitar desajustes */
 }
 
 .film-year {
   font-size: 1.4rem;
   font-weight: 600;
   color: #669bbc;
-  margin-bottom: 5px;
+  margin: 0; /* Elimina margen para evitar desajustes */
 }
 
-.film-genres {
-  display: flex;
-  gap: 5px;
-  flex-wrap: wrap; /* Allow genres to wrap if there are too many */
-}
-
-.film-genre {
-  padding: 5px 10px;
-  border-radius: 8px;
-  background-color: rgba(148, 210, 189, 0.2); /* Light green background */
-  color: #94d2bd;
-  font-weight: bold;
-  font-size: 1rem;
-  text-transform: capitalize; /* Optional: capitalizes the first letter of each word */
-}
-
+.film-genres,
 .film-directors {
   display: flex;
   gap: 5px;
   flex-wrap: wrap; /* Allow genres to wrap if there are too many */
 }
 
+.film-genre,
 .film-director {
   padding: 5px 10px;
   border-radius: 8px;
-  background-color: rgba(148, 210, 189, 0.2); /* Light green background */
-  color: #94d2bd;
   font-weight: bold;
   font-size: 1rem;
   text-transform: capitalize; /* Optional: capitalizes the first letter of each word */
 }
 
+.film-genre {
+  background-color: rgba(148, 210, 189, 0.2);
+  color: #94d2bd;
+}
+
+.film-director {
+  background-color: rgba(167, 139, 250, 0.2);
+  color: var(--tropical-indigo);
+}
 
 .film-actions {
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-items: center;
-}
-
-.film-watched, .film-liked {
   padding: 5px 10px;
   border-radius: 8px;
   font-weight: bold;
   font-size: 1rem;
 }
 
-.film-watched {
-  background-color: rgba(148, 210, 189, 0.2);
-  color: #94d2bd;
-}
-
-.film-liked {
-  background-color: rgba(255, 165, 133, 0.2);
-  color: #ffa585;
+.film-actions-icons {
+  display: flex;
+  gap: 10px;
 }
 
 /* BOTÓN PARA AÑADIR A LISTAS */
@@ -127,8 +133,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
+  width: auto;
+  height: auto;
 }
 
 .film-actions button:hover {
@@ -141,4 +147,17 @@
 
 .film-actions button.watched {
   color: var(--carolina-blue);
+}
+
+.film-synopsis {
+  margin-top: 20px; /* Add margin to ensure space between actions and synopsis */
+  text-align: left;
+  font-size: 1rem;
+}
+
+.film-synopsis h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffa585;
+  margin-bottom: 10px;
 }
