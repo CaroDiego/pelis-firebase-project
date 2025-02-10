@@ -7,15 +7,24 @@ import { FilmContext } from "../context/film.context";
 function GetForm(props) {
   const { addFilm } = useContext(FilmContext);
   const [name, setName] = useState("");
+  const [tagLine, setTagLine] = useState("");
+  const [overview, setOverview] = useState("");
   const [poster, setPoster] = useState("");
   const [year, setYear] = useState("");
   const [genre, setGenre] = useState("");
   const [director, setDirector] = useState("");
 
-  const fieldsComplete = name && poster && year && genre && director;
+  const fieldsComplete =
+    name && tagLine && overview && poster && year && genre && director;
 
   const nameChange = (e) => {
     setName(e.target.value);
+  };
+  const tagLineChange = (e) => {
+    setTagLine(e.target.value);
+  };
+  const overviewChange = (e) => {
+    setOverview(e.target.value);
   };
 
   const posterChange = (e) => {
@@ -39,6 +48,8 @@ function GetForm(props) {
     const id = name.toLowerCase().replace(/\s+/g, "-") + "-" + year;
     const film = {
       name: name,
+      tagLine: tagLine,
+      overview: overview,
       poster: poster,
       year: year,
       genre: genre.split(",").map((genre) => genre.trim()),
@@ -77,35 +88,58 @@ function GetForm(props) {
           <CloseIcon />
         </button>
         <p className="title">Add Film</p>
+
         <form onSubmit={handleSubmit} className="form">
-          <div className="input-group">
-            <label htmlFor="name-film">Film Name</label>
-            <input
-              type="text"
-              id="name-film"
-              value={name}
-              onChange={nameChange}
-            />
+          <div className="input-group-group">
+            <div className="input-group">
+              <label htmlFor="name-film">Film Name</label>
+              <input
+                type="text"
+                id="name-film"
+                value={name}
+                onChange={nameChange}
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="tagLine-film">Tag Line</label>
+              <input
+                type="text"
+                id="tagLine-film"
+                value={tagLine}
+                onChange={tagLineChange}
+              />
+            </div>
           </div>
           <div className="input-group">
-            <label htmlFor="poster-film">Poster</label>
-            <input
-              type="url"
-              id="poster-film"
-              value={poster}
-              onChange={posterChange}
-            ></input>
+            <label htmlFor="overview-film">Overview</label>
+            <textarea
+              id="overview-film"
+              value={overview}
+              onChange={overviewChange}
+              rows="4"
+            ></textarea>
           </div>
-          <div className="input-group">
-            <label htmlFor="year-film">Year</label>
-            <input
-              type="number"
-              id="year-film"
-              value={year}
-              onChange={yearChange}
-              min="1800"
-              max={new Date().getFullYear()}
-            />
+          <div className="input-group-group">
+            <div className="input-group">
+              <label htmlFor="poster-film">Poster</label>
+              <input
+                type="url"
+                id="poster-film"
+                value={poster}
+                onChange={posterChange}
+              ></input>
+            </div>
+            <div className="input-group">
+              <label htmlFor="year-film">Year</label>
+              <input
+                type="number"
+                id="year-film"
+                value={year}
+                onChange={yearChange}
+                min="1800"
+                max={new Date().getFullYear()}
+              />
+            </div>
           </div>
           <div className="input-group">
             <label htmlFor="genre-film">Genre</label>
