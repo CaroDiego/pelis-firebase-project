@@ -107,23 +107,33 @@ function FilmProviderWrapper(props) {
   };
 
   const searchFilmsByDirector = async (director) => {
-    const filteredFilmsByDirector = await simplequery(
+    const filteredFilms = await simplequery(
       "films",
       "director",
       "array-contains",
       director
     );
-    setFilms(filteredFilmsByDirector);
+    setFilms(filteredFilms);
   };
 
   const searchFilmsByGenre = async (genre) => {
-    const filteredFilmsByDirector = await simplequery(
+    const filteredFilms = await simplequery(
       "films",
       "genre",
       "array-contains",
       genre
     );
-    setFilms(filteredFilmsByDirector);
+    setFilms(filteredFilms);
+  };
+
+  const searchFilmsByWatched = async () => {
+    const filteredFilms = await simplequery("films", "watched", "==", true);
+    setFilms(filteredFilms);
+  };
+
+  const searchFilmsByLiked = async () => {
+    const filteredFilms = await simplequery("films", "liked", "==", true);
+    setFilms(filteredFilms);
   };
 
   return (
@@ -137,6 +147,8 @@ function FilmProviderWrapper(props) {
         fetchFilm,
         searchFilmsByDirector,
         searchFilmsByGenre,
+        searchFilmsByWatched,
+        searchFilmsByLiked,
       }}
     >
       {props.children}

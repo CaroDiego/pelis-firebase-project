@@ -5,8 +5,14 @@ import { FilmContext } from "../context/film.context";
 
 function FilmList(props) {
   const { action } = props;
-  const { films, getFilms, searchFilmsByDirector, searchFilmsByGenre } =
-    useContext(FilmContext);
+  const {
+    films,
+    getFilms,
+    searchFilmsByDirector,
+    searchFilmsByGenre,
+    searchFilmsByWatched,
+    searchFilmsByLiked,
+  } = useContext(FilmContext);
   const [loading, setLoading] = useState(true);
   const [title, setTitle] = useState("");
 
@@ -33,6 +39,14 @@ function FilmList(props) {
         }
         case "all":
           await getFilms();
+          setTitle(action[1]);
+          break;
+        case "watched":
+          await searchFilmsByWatched();
+          setTitle(action[1]);
+          break;
+        case "liked":
+          await searchFilmsByLiked();
           setTitle(action[1]);
           break;
       }
