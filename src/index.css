@@ -1,7 +1,15 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 body {
+  margin: 0;  /* Elimina el margen por defecto */
+  padding: 0; /* Asegura que no haya padding */
   background-color: var(--brunswick-green);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
 
 /* SCSS Gradient */
 /* $gradient-top: linear-gradient(0deg, #193e36ff, #90c2ddff, #d49e32ff, #c299b7ff, #c29b70ff, #784185ff);
