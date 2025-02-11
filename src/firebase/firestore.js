@@ -6,6 +6,8 @@ import {
   updateDoc,
   setDoc,
   getDoc,
+  where,
+  query,
 } from "firebase/firestore";
 import db from "./config";
 
@@ -92,5 +94,21 @@ export const updateDocument = async (collectionName, id, updates) => {
     await updateDoc(docRef, updates);
   } catch (e) {
     console.error("Error updating document: ", e);
+  }
+};
+
+export const simplequery = async (collectionName, field, symbol, value) => {
+  try {
+    const colRef = collection(db, collectionName);
+    const q = query(colRef, where(field, symbol, value));
+    const querySnapshot = await getDocs(q);
+    const films = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    return films;
+  } catch (e) {
+    console.error("Error executing query: ", e);
+    throw e;
   }
 };

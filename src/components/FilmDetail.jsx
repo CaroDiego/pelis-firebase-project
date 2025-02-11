@@ -6,6 +6,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { FilmContext } from "../context/film.context";
 import AddToList from "./AddToList";
+import { Link } from "react-router-dom";
 
 function FilmDetail(props) {
   const { changeLiked, changeWatched } = useContext(FilmContext);
@@ -71,6 +72,10 @@ function FilmDetail(props) {
     setWatch(!watch);
   };
 
+  const handleFormat = (name) => {
+    return name.toLowerCase().replace(/\s+/g, "-");
+  };
+
   function togglePop() {
     setSeen(!seen);
     if (!seen) {
@@ -103,16 +108,20 @@ function FilmDetail(props) {
             </span>
             <div className="film-directors">
               {directors.map((director) => (
-                <span className="film-director" key={director}>
-                  {director}
-                </span>
+                <Link to={`/director/${handleFormat(director)}`} key={director}>
+                  <span className="film-director" key={director}>
+                    {director}
+                  </span>
+                </Link>
               ))}
             </div>
             <div className="film-genres">
               {genres.map((genre) => (
-                <span className="film-genre" key={genre}>
-                  {genre}
-                </span>
+                <Link to={`/genre/${handleFormat(genre)}`} key={genre}>
+                  <span className="film-genre" key={genre}>
+                    {genre}
+                  </span>
+                </Link>
               ))}
             </div>
           </div>
@@ -152,7 +161,6 @@ function FilmDetail(props) {
               onClick={() => setIsExpanded(!isExpanded)}
             >
               {isExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-              
             </button>
           )}
         </div>

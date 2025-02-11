@@ -5,6 +5,8 @@ import { Route, Routes } from "react-router-dom";
 const FilmsPage = lazy(() => import("./pages/FilmsPage"));
 const FilmPage = lazy(() => import("./pages/FilmPage"));
 const ErrorPage = lazy(() => import("./pages/ErrorPage"));
+const DirectorPage = lazy(() => import("./pages/DirectorPage"));
+const GenrePage = lazy(() => import("./pages/GenrePage"));
 function App() {
   const Layout = ({ children }) => (
     <main className="page-layout">{children}</main>
@@ -17,11 +19,10 @@ function App() {
           path="/"
           element={
             <Layout>
-              {" "}
               <FilmsPage />
             </Layout>
           }
-        ></Route>
+        />
         <Route
           path="/film/:id"
           element={
@@ -29,9 +30,24 @@ function App() {
               <FilmPage />
             </Layout>
           }
-        ></Route>{" "}
+        />
+        <Route
+          path="/director/:director"
+          element={
+            <Layout>
+              <DirectorPage />
+            </Layout>
+          }
+        />
+        <Route
+          path="/genre/:genre"
+          element={
+            <Layout>
+              <GenrePage />
+            </Layout>
+          }
+        />
         <Route path="*" element={<ErrorPage />} />
-        <Route path="/film/*" element={<ErrorPage />} />
       </Routes>
     </Suspense>
   );

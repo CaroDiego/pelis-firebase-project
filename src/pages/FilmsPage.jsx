@@ -23,7 +23,7 @@ function FilmsPage() {
         </button>
       </div>
       {seen ? <GetForm toggle={togglePop}></GetForm> : null}
-      <FilmList></FilmList>
+      <FilmList action={["all", "All Films"]}></FilmList>
     </>
   );
 }

@@ -92,6 +92,14 @@
   color: var(--tropical-indigo);
 }
 
+.film-directors a {
+  text-decoration: none; /* Remove underline from links */
+}
+.film-genres a {
+  margin-top: 5px;
+  text-decoration: none; /* Remove underline from links */
+}
+
 .film-actions {
   display: flex;
   flex-direction: column;
