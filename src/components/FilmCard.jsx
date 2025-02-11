@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
+import  { useContext } from "react";
 import "./FilmCard.css";
-import { useState, useEffect } from "react";
-import { delDocument, updateDocument } from "../firebase/firestore";
+import { useState } from "react";
+import { delDocument } from "../firebase/firestore";
 import { Link } from "react-router-dom";
 import { Favorite, MoreHoriz } from "@mui/icons-material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import AddToList from "./AddToList";
-import { use } from "react";
 import { FilmContext } from "../context/film.context";
 
 function FilmCard(props) {

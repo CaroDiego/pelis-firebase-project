@@ -3,6 +3,7 @@ import {
   getAllDocuments,
   getDocument,
   setDocument,
+  simplequery,
   updateDocument,
 } from "../firebase/firestore";
 
@@ -105,6 +106,26 @@ function FilmProviderWrapper(props) {
     }
   };
 
+  const searchFilmsByDirector = async (director) => {
+    const filteredFilmsByDirector = await simplequery(
+      "films",
+      "director",
+      "array-contains",
+      director
+    );
+    setFilms(filteredFilmsByDirector);
+  };
+
+  const searchFilmsByGenre = async (genre) => {
+    const filteredFilmsByDirector = await simplequery(
+      "films",
+      "genre",
+      "array-contains",
+      genre
+    );
+    setFilms(filteredFilmsByDirector);
+  };
+
   return (
     <FilmContext.Provider
       value={{
@@ -114,6 +135,8 @@ function FilmProviderWrapper(props) {
         changeLiked,
         changeWatched,
         fetchFilm,
+        searchFilmsByDirector,
+        searchFilmsByGenre,
       }}
     >
       {props.children}
