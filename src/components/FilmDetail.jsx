@@ -1,8 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import "./FilmDetail.css";
 import { Favorite } from "@mui/icons-material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { FilmContext } from "../context/film.context";
 import AddToList from "./AddToList";
 
@@ -16,6 +17,11 @@ function FilmDetail(props) {
 
   const [like, setLike] = useState(false);
   const [watch, setWatch] = useState(false);
+  const [seen, setSeen] = useState(false);
+
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [showExpandButton, setShowExpandButton] = useState(false);
+  const synopsisRef = useRef(null);
 
   useEffect(() => {
     if (film) {
@@ -25,6 +31,14 @@ function FilmDetail(props) {
       setWatch(film.watched);
     }
   }, [film]);
+
+  useEffect(() => {
+    if (synopsisRef.current) {
+      const element = synopsisRef.current;
+      const needsExpand = element.scrollHeight > element.clientHeight;
+      setShowExpandButton(needsExpand);
+    }
+  }, [film?.overview]);
 
   const filmGenres = () => {
     if (film && Array.isArray(film.genre)) {
@@ -56,8 +70,6 @@ function FilmDetail(props) {
     await changeWatched(film.id, watch);
     setWatch(!watch);
   };
-
-  const [seen, setSeen] = useState(false);
 
   function togglePop() {
     setSeen(!seen);
@@ -129,12 +141,20 @@ function FilmDetail(props) {
 
         {/* Sinopsis debajo de la información y acciones */}
         <div className="film-synopsis">
-          <h3>Sinopsis</h3>
-          <p>
-            A television reporter and cameraman follow emergency workers into a
-            dark apartment building and are quickly locked inside with something
-            terrifying.
+          <h3>{film?.tagLine}</h3>
+          <p ref={synopsisRef} className={isExpanded ? "expanded" : ""}>
+            {" "}
+            {film?.overview}{" "}
           </p>
+          {showExpandButton && (
+            <button
+              className="expand-button"
+              onClick={() => setIsExpanded(!isExpanded)}
+            >
+              {isExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+              
+            </button>
+          )}
         </div>
       </div>
 

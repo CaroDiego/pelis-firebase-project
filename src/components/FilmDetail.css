@@ -5,20 +5,22 @@
   justify-content: space-between;
   gap: 20px;
   width: 100%;
-  max-width: 900px;
+  max-width: 950px;
   margin: 20px auto;
   padding: 20px;
   background-color: var(--rich-black);
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   color: #fbfff1;
+  min-height: 373px;
 }
 
 .film-detail-poster {
-  width: 180px;
-  height: auto;
+  width: auto;
+  height: 300px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(255, 165, 133, 0.5);
+  
 }
 
 .film-info-actions {
@@ -150,7 +152,7 @@
 }
 
 .film-synopsis {
-  margin-top: 20px; /* Add margin to ensure space between actions and synopsis */
+  margin-top: 20px;
   text-align: left;
   font-size: 1rem;
 }
@@ -158,6 +160,42 @@
 .film-synopsis h3 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #ffa585;
+  color: var(--jasmine);
   margin-bottom: 10px;
+}
+
+/* Añade estos estilos CSS */
+.film-synopsis p {
+  line-height: 1.5;
+  transition: all 0.3s ease;
+  align-items: center;
+  text-align: justify; /* Ensure text is justified */
+}
+
+/* Estado truncado por defecto */
+.film-synopsis p:not(.expanded) {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.expand-button {
+  background: none;
+  border: none;
+  color: #ffa585;
+  color: var(--jasmine);
+  cursor: pointer;
+  padding: 5px 10px;
+  margin-top: 0px; /* Bring the button closer to the text */
+  border-radius: 5px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: block; /* Ensure the button is a block element */
+  margin-left: auto; /* Center the button */
+  margin-right: auto; /* Center the button */
+}
+
+.expand-button:hover {
+  background-color: rgba(253, 230, 138, 0.1);
 }
