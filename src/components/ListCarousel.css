@@ -1,0 +1,41 @@
+.swiper {
+  width: 100%;
+  height: 110%;
+  margin-bottom: 20px;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.film-card {
+  position: relative;
+  height: 300px;
+  width: auto;
+    outline: 3px solid transparent;
+  border-radius: 8px;
+  transition: outline-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.film-container:hover .film-card {
+  outline-color: var(--tropical-indigo);
+  transform: scale(.95);
+}
+.swiper-pagination-bullet {
+  background-color: var(--anti-flash-white) !important;
+  opacity: 1;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--carolina-blue) !important;
+}
+

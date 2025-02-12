@@ -117,7 +117,7 @@ function FilmDetail(props) {
             </div>
             <div className="film-genres">
               {genres.map((genre) => (
-                <Link to={`/genre/${handleFormat(genre)}`} key={genre}>
+                <Link to={`/films/genre/${handleFormat(genre)}`} key={genre}>
                   <span className="film-genre" key={genre}>
                     {genre}
                   </span>

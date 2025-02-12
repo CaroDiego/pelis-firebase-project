@@ -9,8 +9,9 @@ const FilmPage = lazy(() => import("./pages/FilmPage"));
 const ErrorPage = lazy(() => import("./pages/ErrorPage"));
 const DirectorPage = lazy(() => import("./pages/DirectorPage"));
 const GenrePage = lazy(() => import("./pages/GenrePage"));
-const Watched = lazy(() => import("./pages/Watched"));
-const Liked = lazy(() => import("./pages/Liked"));
+const Watched = lazy(() => import("./pages/WatchedPage"));
+const Liked = lazy(() => import("./pages/LikedPage"));
+const ListsPage = lazy(() => import("./pages/ListsPage"));
 
 // TODO 1. watched and liked pages
 // TODO 2. lists page
@@ -49,7 +50,7 @@ function App() {
             }
           />
           <Route
-            path="/genre/:genre"
+            path="films/genre/:genre"
             element={
               <Layout>
                 <GenrePage />
@@ -69,6 +70,14 @@ function App() {
             element={
               <Layout>
                 <Liked />
+              </Layout>
+            }
+          />
+          <Route
+            path="/lists"
+            element={
+              <Layout>
+                <ListsPage />
               </Layout>
             }
           />

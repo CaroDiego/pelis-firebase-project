@@ -1,4 +1,4 @@
-import  { useContext } from "react";
+import { useContext } from "react";
 import "./FilmCard.css";
 import { useState } from "react";
 import { delDocument } from "../firebase/firestore";
@@ -11,7 +11,6 @@ import { FilmContext } from "../context/film.context";
 function FilmCard(props) {
   const { changeLiked, changeWatched } = useContext(FilmContext);
   const { film } = props;
-
 
   const [like, setLike] = useState(film.liked);
   const [watch, setWatch] = useState(film.watched);
@@ -45,10 +44,8 @@ function FilmCard(props) {
     }
   };
 
-
   return film.id ? (
     <div className="film-container">
-      {/* <h2 className="film-name">{film.name}</h2> */}
       <Link to={`/film/${film.id}`} className="film-link">
         <img src={film.poster} alt={film.name} className="film-poster" />
       </Link>
